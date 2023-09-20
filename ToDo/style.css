@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.task-input {
+    width: 70%;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 6px;
+}
+.add-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.remove-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 6px;
+}
