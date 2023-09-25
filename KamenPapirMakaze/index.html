@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamen, Papir, Makaze</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        #game-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #000000;
+        }
+
+        #result {
+            margin: 20px 0;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #630b80;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #8d11b6;
+        }
+
+        #outcome {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        p{
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Kamen, Papir, Makaze</h1>
+        <div id="result">
+            <p>Odaberite svoj potez:</p>
+            <button id="Kamen">Kamen</button>
+            <button id="Papir">Papir</button>
+            <button id="Makaze">Makaze</button>
+        </div>
+        <div id="outcome">
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        const choices = ["Kamen", "Papir", "Makaze"];
+
+const buttons = document.querySelectorAll("button");
+const outcome = document.getElementById("outcome");
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const playerChoice = button.id;
+        const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+        const result = determineWinner(playerChoice, computerChoice);
+        displayOutcome(result, computerChoice, playerChoice);
+    });
+});
+
+function determineWinner(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
+        return "Neriješeno 😐";
+    } else if (
+        (playerChoice === "Kamen" && computerChoice === "Makaze") ||
+        (playerChoice === "Papir" && computerChoice === "Kamen") ||
+        (playerChoice === "Makaze" && computerChoice === "Papir")
+    ) {
+        return "Pobjednik ste! 🎉";
+    } else {
+        return "Računar je pobijedio. 😢";
+    }
+}
+
+function displayOutcome(result, computerChoice, playerChoice) {
+    outcome.querySelector("p").textContent = `Vaš izbor je:  ${playerChoice} \nRačunar je odabrao: ${computerChoice}  \n${result}`;
+}
+    </script>
+</body>
+</html>
+
